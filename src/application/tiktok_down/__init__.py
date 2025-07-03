@@ -1,0 +1,1 @@
+from .tt_downloader import get_video_from_tiktok as get_video_from_tiktok

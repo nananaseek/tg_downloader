@@ -1,0 +1,19 @@
+# Environment variables
+.env
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Logs
+logs/
+*.log
+
+# Databases
+database/*.db
+
+# Downloaded media and temporary files
+reels_downloads/
+segments_of_clip/
+tiktok_downloads/
+video_info.json

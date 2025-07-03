@@ -1,0 +1,1 @@
+from .init_bot import start_bot as start_bot
