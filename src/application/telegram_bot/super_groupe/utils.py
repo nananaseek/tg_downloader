@@ -1,3 +1,4 @@
+import logging
 import os
 
 from utils import find_project_files_in_reels_downloads
@@ -28,14 +29,23 @@ def classify_social_media_url(url: str) -> dict:
         
 def instagram_video_url():
         files = find_project_files_in_reels_downloads()
-        raw_video = files.get("mp4")[0]
-        raw_text = files.get("txt")[0]
-        
-        with open(raw_video, "rb") as f:
-            video_data = f.read()
-        
-        with open(raw_text, "rb") as f:
-            text = f.read().decode("utf-8")
+        raw_video = files.get("mp4")
+        raw_text = files.get("txt")
+
+        if raw_video:
+            raw_video = raw_video[0]
+            with open(raw_video, "rb") as f:
+                video_data = f.read()
+        else:
+            raise Exception()
+
+        if raw_text:
+            logging.debug(f"raw_text obj is: {raw_text}")
+            raw_text = raw_text[0]
+            with open(raw_text, "rb") as f:
+                text = f.read().decode("utf-8")
+        else:
+            text = "Не має опису чи щось таке... я хз"
         
         for file in [raw_video, raw_text]:
             try:
